@@ -193,8 +193,8 @@ class DynamicsSimulator(object):
         # Actual simulation consisting of two levels of dynamics, one at the level of the group and one in between the groups.
         for i in range(num_gens):
             r,p=self.next_generation(start_state,group_selection,self.rate)
-            strategies.append(np.array([r[j] for j in range(self.number_groups)]))
-            payoffs.append(np.array([p[j] for j in range(self.number_groups)]))
+            strategies.append(np.array([r[j] for j in range(self.number_groups)],dtype=object))
+            payoffs.append(np.array([p[j] for j in range(self.number_groups)],dtype=object))
             start_state=strategies[i+1]
             for j in range(self.number_groups):
                 start_state[j] = self.validate_state(start_state[j])
